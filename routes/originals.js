@@ -1,6 +1,6 @@
 const express=require("express")
 const router=express.Router()
-const {getAllOriginals,postOriginals,UpdateOriginals,deleteOriginals,getEachOriginals}=require("../controller/Originals")
+const {getAllOriginals,postOriginals,UpdateOriginals,deleteOriginals,getEachOriginals}=require("../controller/originals")
 
 
 
