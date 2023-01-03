@@ -28,20 +28,21 @@ const postPrints=asyncWrapper(async (req,res)=>
     try{
        const result=await cloudinary.uploader.upload(req.file.path,{
         folder:"Mitra"
-})
+        }       )
        console.log("####")
        console.log(result.url)
+       const data_req={...req.body,productImage:result.url}
+       const prints=await Prints.create(data_req)
+   
+           res.status(StatusCode.OK).json({
+               prints
+           })
     }
     catch(error)
     {
         console.log(error)
     }
-    const data_req={...req.body,productImage:result.url}
-    const prints=await Prints.create(data_req)
-
-        res.status(StatusCode.OK).json({
-            prints
-        })
+  
    
    
 })
