@@ -21,6 +21,6 @@ const storage = multer.diskStorage({})
 router.route("/").get(getAllPrints).post(upload.single("productImage"),postPrints)
 
 
-router.route("/:printsid").get(getEachPrints).delete(deletePrints).patch(UpdatePrints)
+router.route("/:printsid").get(getEachPrints).delete(deletePrints).patch(upload.single("productImage"),UpdatePrints)
 
 module.exports=router
