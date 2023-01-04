@@ -65,7 +65,8 @@ const UpdatePrints=asyncWrapper(async(req,res)=>
     }
     
     res.status(StatusCode.OK).json({
-       message:`Item updated ${update}`
+       message:`Item updated ${update}`,
+      prints:prints
     })
 })
 const deletePrints=asyncWrapper(async(req,res)=>
