@@ -50,10 +50,27 @@ const postPrints=asyncWrapper(async (req,res)=>
 const UpdatePrints=asyncWrapper(async(req,res)=>
 {
     const id=req.params.printsid
-  
+    console.log(req.file.path,"pppp")
+
+    console.log(req.body)
+    try{
+        if(!req.file.path)
+        {
+             data_req={...req.body}
+        }
+     else{
+        const result=await cloudinary.uploader.upload(req.file.path,{
+            folder:"Mitra"
+            }       )
+           console.log("####")
+           console.log(result.url)
+            data_req={...req.body,productImage:result.url}
+
+        
+     }
     
-    
-    const prints=await Prints.findByIdAndUpdate(id,{...req.body})
+    console.log(data_req)
+     const prints=await Prints.findByIdAndUpdate(id,data_req)
    
     if(!prints){
         throw new BadRequestError("product not found")
@@ -62,7 +79,12 @@ const UpdatePrints=asyncWrapper(async(req,res)=>
     res.status(StatusCode.OK).json({
        message:`Item updated `
       
-    })
+    })}
+    catch(error)
+    {
+        console.log(error)
+    }
+  
 })
 const deletePrints=asyncWrapper(async(req,res)=>
 {
