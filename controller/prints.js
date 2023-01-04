@@ -50,23 +50,18 @@ const postPrints=asyncWrapper(async (req,res)=>
 const UpdatePrints=asyncWrapper(async(req,res)=>
 {
     const id=req.params.printsid
-    const update=req.params.update
-    console.log(req.body)
-    if(!req.body[update])
-    {
-        throw new BadRequestError(`Updates not given for  ${update}` )
-
-    }
-    console.log(req.body[update])
-    const prints=await Prints.findByIdAndUpdate(id,{[update]:req.body[update]})
+  
+    
+    
+    const prints=await Prints.findByIdAndUpdate(id,{...req.body})
    
     if(!prints){
         throw new BadRequestError("product not found")
     }
     
     res.status(StatusCode.OK).json({
-       message:`Item updated ${update}`,
-      prints:prints
+       message:`Item updated `
+      
     })
 })
 const deletePrints=asyncWrapper(async(req,res)=>
