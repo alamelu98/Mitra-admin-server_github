@@ -50,11 +50,11 @@ const postPrints=asyncWrapper(async (req,res)=>
 const UpdatePrints=asyncWrapper(async(req,res)=>
 {
     const id=req.params.printsid
-    console.log(req.file.path,"pppp")
+ 
 
     console.log(req.body)
     try{
-        if(!req.file.path)
+        if(req.file.path === undefined)
         {
              data_req={...req.body}
         }
