@@ -27,7 +27,7 @@ const postPrints=asyncWrapper(async (req,res)=>
     console.log(req.body)
     try{
        const result=await cloudinary.uploader.upload(req.file.path,{
-        folder:"Mitra"
+        folder:"MitraPrints"
         }       )
        console.log("####")
        console.log(result.url)
