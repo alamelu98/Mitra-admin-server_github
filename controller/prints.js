@@ -50,13 +50,14 @@ const postPrints=asyncWrapper(async (req,res)=>
 const UpdatePrints=asyncWrapper(async(req,res)=>
 {
     const id=req.params.printsid
- 
+    // console.log(req.file.path,"pppp")
 
     console.log(req.body)
     try{
-        if(req.file.path === undefined)
+        if(req.file===undefined)
         {
              data_req={...req.body}
+             
         }
      else{
         const result=await cloudinary.uploader.upload(req.file.path,{
