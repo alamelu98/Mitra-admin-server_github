@@ -5,9 +5,10 @@ const BadRequestError=require("../error/badrequest")
 const getAllOriginals=asyncWrapper(async(req,res)=>
 {
     const originals=await Originals.find()
+    const neworiginals=originals.map((eachitem)=>{return {_id:eachitem._id,name:eachitem.name,price:eachitem.price,styles:eachitem.styles,stockQuantity:eachitem.stockQuantity,inStock:eachitem.inStock,productImage:eachitem.productImage,url:`https://sore-ox-knickers.cyclic.app/originals/${eachitem._id}`}})
 
     res.status(StatusCodes.OK).json({
-        originals:originals
+        originals:neworiginals
     })
 })
 const cloudinary = require('cloudinary').v2;
@@ -32,9 +33,10 @@ const postOriginals=asyncWrapper(async(req,res)=>
        console.log(result.url)
        const data_req={...req.body,productImage:result.url}
        const originals=await Originals.create(data_req)
-   
+       const neworiginals={_id:originals._id,name:originals.name,price:originals.price,styles:originals.styles,stockQuantity:originals.stockQuantity,inStock:originals.inStock,productImage:originals.productImage,url:`https://sore-ox-knickers.cyclic.app/originals/${originals._id}`}
+
        res.status(StatusCodes.OK).json({
-        originals:originals
+        originals:neworiginals
     })
     }
     catch(error)
@@ -68,12 +70,15 @@ const UpdateOriginals=asyncWrapper(async(req,res)=>
     
     console.log(data_req)
     const originals=await Originals.findByIdAndUpdate(id,data_req)
+    const neworiginals={_id:originals._id,name:originals.name,price:originals.price,styles:originals.styles,stockQuantity:originals.stockQuantity,inStock:originals.inStock,productImage:originals.productImage,url:`https://sore-ox-knickers.cyclic.app/originals/${originals._id}`}
+
     if(!originals){
         throw new BadRequestError("product not found")
     }
     
     res.status(StatusCodes.OK).json({
-       message:`Item updated`
+       message:`Item updated`,
+       neworiginals
     })
 }
 
@@ -98,11 +103,13 @@ const getEachOriginals=asyncWrapper(async(req,res)=>
 {
     const id=req.params.Originalsid
     const originals=await Originals.findById(id)
+    const neworiginals={_id:originals._id,name:originals.name,price:originals.price,styles:originals.styles,stockQuantity:originals.stockQuantity,inStock:originals.inStock,productImage:originals.productImage,url:`https://sore-ox-knickers.cyclic.app/originals/${originals._id}`}
+
     if(!originals){
         throw new BadRequestError("Product not found")
     }
     res.status(StatusCodes.OK).json({
-        originals:originals
+        originals:neworiginals
     })
 })
 module.exports={getAllOriginals,postOriginals,UpdateOriginals,deleteOriginals,getEachOriginals}
