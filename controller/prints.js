@@ -10,11 +10,11 @@ cloudinary.config({
 });
 const getAllPrints=asyncWrapper (async (req,res)=>
 {
-    const prints=await Prints.find()
-    const newprints=prints.map((eachitem)=>{return {_id:eachitem._id,name:eachitem.name,price:eachitem.price,styles:eachitem.styles,stockQuantity:eachitem.stockQuantity,inStock:eachitem.inStock,productImage:eachitem.productImage,url:`https://sore-ox-knickers.cyclic.app/prints/${eachitem._id}`}})
-    console.log(newprints)
+    const prints1=await Prints.find()
+    const prints=prints1.map((eachitem)=>{return {_id:eachitem._id,name:eachitem.name,price:eachitem.price,styles:eachitem.styles,stockQuantity:eachitem.stockQuantity,inStock:eachitem.inStock,productImage:eachitem.productImage,url:`https://sore-ox-knickers.cyclic.app/prints/${eachitem._id}`}})
+    console.log(prints)
     res.status(StatusCode.OK).json({
-             newprints
+            prints
          })
     
 })
@@ -32,13 +32,13 @@ const postPrints=asyncWrapper(async (req,res)=>
        console.log("####")
        console.log(result.url)
        const data_req={...req.body,productImage:result.url}
-       const prints=await Prints.create(data_req)
-       const newprints={_id:prints._id,name:prints.name,price:prints.price,styles:prints.styles,stockQuantity:prints.stockQuantity,inStock:prints.inStock,productImage:prints.productImage,url:`https://sore-ox-knickers.cyclic.app/prints/${prints._id}`}
+       const prints1=await Prints.create(data_req)
+       const prints={_id:prints1._id,name:prints1.name,price:prints1.price,styles:prints1.styles,stockQuantity:prints1.stockQuantity,inStock:prints1.inStock,productImage:prints1.productImage,url:`https://sore-ox-knickers.cyclic.app/prints/${prints1._id}`}
     //    prints.map((eachitem)=>{return {_id:eachitem._id,name:eachitem.name,price:eachitem.price,styles:eachitem.styles,stockQuantity:eachitem.stockQuantity,inStock:eachitem.inStock,productImage:eachitem.productImage,url:`https://sore-ox-knickers.cyclic.app/prints/${eachitem._id}`}})
 
    
            res.status(StatusCode.OK).json({
-               newprints
+               prints
            })
     }
     catch(error)
@@ -74,8 +74,8 @@ const UpdatePrints=asyncWrapper(async(req,res)=>
      }
     
     console.log(data_req)
-     const prints=await Prints.findByIdAndUpdate(id,data_req)
-     const newprints={_id:prints._id,name:prints.name,price:prints.price,styles:prints.styles,stockQuantity:prints.stockQuantity,inStock:prints.inStock,productImage:prints.productImage,url:`https://sore-ox-knickers.cyclic.app/prints/${prints._id}`}
+     const prints1=await Prints.findByIdAndUpdate(id,data_req)
+     const prints={_id:prints1._id,name:prints1.name,price:prints1.price,styles:prints1.styles,stockQuantity:prints1.stockQuantity,inStock:prints1.inStock,productImage:prints1.productImage,url:`https://sore-ox-knickers.cyclic.app/prints/${prints1._id}`}
 
     if(!prints){
         throw new BadRequestError("product not found")
@@ -106,14 +106,14 @@ const deletePrints=asyncWrapper(async(req,res)=>
 const getEachPrints=asyncWrapper(async(req,res)=>
 {
     const id=req.params.printsid
-    const prints=await Prints.findById(id)
-    const newprints={_id:prints._id,name:prints.name,price:prints.price,styles:prints.styles,stockQuantity:prints.stockQuantity,inStock:prints.inStock,productImage:prints.productImage,url:`https://sore-ox-knickers.cyclic.app/prints/${prints._id}`}
+    const prints1=await Prints.findById(id)
+    const prints={_id:prints1._id,name:prints1.name,price:prints1.price,styles:prints1.styles,stockQuantity:prints1.stockQuantity,inStock:prints1.inStock,productImage:prints1.productImage,url:`https://sore-ox-knickers.cyclic.app/prints/${prints1._id}`}
 
     if(!prints){
         throw new BadRequestError("Product not found")
     }
     res.status(StatusCode.OK).json({
-        prints:newprints
+        prints:prints
     })
 })
 
