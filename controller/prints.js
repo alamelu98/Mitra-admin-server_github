@@ -83,7 +83,7 @@ const UpdatePrints=asyncWrapper(async(req,res)=>
     
     res.status(StatusCode.OK).json({
        message:`Item updated `,
-       newprints
+       prints
       
     })}
     catch(error)
