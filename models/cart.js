@@ -19,7 +19,10 @@ const CartSchema=mongoose.Schema(
                     type:Number,
                     required:[true,"Stock quantity is needed"],
                     default:1
-                }
+                },
+                   productImage: {
+        type: String, 
+        required: true }
             }
                 ]
                
