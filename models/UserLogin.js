@@ -29,7 +29,9 @@ const userLogin=mongoose.Schema({
         type:String,
         required:[true,"Address REQUIRED"],
         trim:true
-    }
+    },date:{
+        type:Date,
+        required:[true,"Date added"]
 })
 userLogin.pre("save",async function(next)
 {
