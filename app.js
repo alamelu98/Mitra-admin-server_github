@@ -2,12 +2,13 @@ require("dotenv").config()
 
 const express=require("express")
 const app= express()
-const port=process.env.PORT||3000
+const port=process.env.PORT||5000
 const printRoute=require("./routes/prints")
 const originalsRoute=require("./routes/originals")
 const cartRoute=require("./routes/cart")
 const userSignupRoute=require("./routes/usersignup")
 const adminRoute=require("./routes/admin")
+const userview=require("./routes/usersview")
 const connectDB=require("./db/connectDB")
 const mongoose=require("mongoose")
 const notFound=require("./middleware/not_found")
@@ -48,12 +49,11 @@ app.get("/",(req,res)=>
 })
 
 app.use('/uploads',express.static('uploads'))
-
 app.use("/admin",adminRoute)
 app.use("/user",userSignupRoute)
 app.use("/admin/prints",adminAuth,printRoute)
 app.use("/prints",printRoute)
-app.use("/admin/users",adminAuth,adminRoute)
+app.use("/admin/users",adminAuth,userview)
 app.use("/admin/originals",adminAuth,originalsRoute)
 app.use("/originals",originalsRoute)
 app.use("/admin/cart",adminAuth,cartRoute)
