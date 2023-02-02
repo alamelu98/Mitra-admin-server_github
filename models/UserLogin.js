@@ -31,7 +31,7 @@ const userLogin=mongoose.Schema({
         trim:true
     },date:{
         type:Date,
-        required:[true,"Date added"]
+        required:[true,"Date added"]}
 })
 userLogin.pre("save",async function(next)
 {
