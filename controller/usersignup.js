@@ -1,7 +1,6 @@
 const asyncWrapper=require("../middleware/async")
 const BadRequestError=require("../error/badrequest")
 const UnAuthError=require("../error/unauthenticated")
-
 const userLogin=require("../models/UserLogin")
 
 
@@ -37,7 +36,7 @@ const userLoginin=asyncWrapper(async(req,res)=>
 const newUserRegister=asyncWrapper(async(req,res)=>
 {
     const tempUser=await userLogin.create({
-        ...req.body
+        ...req.body,date:Date.now()
     })
     const token=tempUser.getToken()
     res.status(200).json({message:"usercreated",userdetails:tempUser,userToken:token})
