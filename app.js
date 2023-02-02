@@ -48,12 +48,12 @@ app.get("/",(req,res)=>
 })
 
 app.use('/uploads',express.static('uploads'))
-app.use("/admin/users",adminAuth,adminRoute)
+
 app.use("/admin",adminRoute)
 app.use("/user",userSignupRoute)
 app.use("/admin/prints",adminAuth,printRoute)
 app.use("/prints",printRoute)
-
+app.use("/admin/users",adminAuth,adminRoute)
 app.use("/admin/originals",adminAuth,originalsRoute)
 app.use("/originals",originalsRoute)
 app.use("/admin/cart",adminAuth,cartRoute)
