@@ -2,7 +2,7 @@ require("dotenv").config()
 
 const express=require("express")
 const app= express()
-const port=process.env.PORT||5000
+const port=process.env.PORT||3000
 const printRoute=require("./routes/prints")
 const originalsRoute=require("./routes/originals")
 const cartRoute=require("./routes/cart")
