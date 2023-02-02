@@ -24,8 +24,6 @@ const rateLimiter=require("express-rate-limit")
 app.use(express.json())
 
 
-
-
 mongoose.set('strictQuery', true);
 
 
