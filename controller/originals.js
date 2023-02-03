@@ -8,7 +8,7 @@ const getAllOriginals=asyncWrapper(async(req,res)=>
     const neworiginals=originals.map((eachitem)=>{return {_id:eachitem._id,name:eachitem.name,price:eachitem.price,styles:eachitem.styles,stockQuantity:eachitem.stockQuantity,inStock:eachitem.inStock,productImage:eachitem.productImage,url:`https://sore-ox-knickers.cyclic.app/originals/${eachitem._id}`}})
 
     res.status(StatusCodes.OK).json({
-        originals:neworiginals,type:"originals"
+        originals:neworiginals
     })
 })
 const cloudinary = require('cloudinary').v2;
@@ -36,7 +36,7 @@ const postOriginals=asyncWrapper(async(req,res)=>
        const neworiginals={_id:originals._id,name:originals.name,price:originals.price,styles:originals.styles,stockQuantity:originals.stockQuantity,inStock:originals.inStock,productImage:originals.productImage,url:`https://sore-ox-knickers.cyclic.app/originals/${originals._id}`}
 
        res.status(StatusCodes.OK).json({
-        originals:neworiginals,type:"originals"
+        originals:neworiginals
     })
     }
     catch(error)
@@ -78,8 +78,7 @@ const UpdateOriginals=asyncWrapper(async(req,res)=>
     
     res.status(StatusCodes.OK).json({
        message:`Item updated`,
-       neworiginals,
-        type:"originals"
+       neworiginals
     })
 }
 
@@ -97,7 +96,7 @@ const deleteOriginals=asyncWrapper(async(req,res)=>
         throw new BadRequestError("Product not found")
     }
     res.status(StatusCodes.OK).json({
-        "message":"delete Originals",type:"originals"
+        "message":"delete Originals"
     })
 })
 const getEachOriginals=asyncWrapper(async(req,res)=>
@@ -109,8 +108,7 @@ const getEachOriginals=asyncWrapper(async(req,res)=>
     if(!originals){
         throw new BadRequestError("Product not found")
     }
-    res.status(StatusCodes.OK).json({
-        originals:neworiginals,type:"originals"
+    res.status(StatusCodes.OK).json({,type:"originals"
     })
 })
 module.exports={getAllOriginals,postOriginals,UpdateOriginals,deleteOriginals,getEachOriginals}
