@@ -108,7 +108,7 @@ const getEachOriginals=asyncWrapper(async(req,res)=>
     if(!originals){
         throw new BadRequestError("Product not found")
     }
-    res.status(StatusCodes.OK).json({,type:"originals"
+    res.status(StatusCodes.OK).json({originals:neworiginals
     })
 })
 module.exports={getAllOriginals,postOriginals,UpdateOriginals,deleteOriginals,getEachOriginals}
