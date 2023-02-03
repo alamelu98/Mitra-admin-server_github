@@ -14,7 +14,7 @@ const getAllPrints=asyncWrapper (async (req,res)=>
     const prints=prints1.map((eachitem)=>{return {_id:eachitem._id,name:eachitem.name,price:eachitem.price,styles:eachitem.styles,stockQuantity:eachitem.stockQuantity,inStock:eachitem.inStock,productImage:eachitem.productImage,url:`https://sore-ox-knickers.cyclic.app/prints/${eachitem._id}`}})
     console.log(prints)
     res.status(StatusCode.OK).json({
-            prints
+            ...prints,type:"prints"
          })
     
 })
@@ -38,7 +38,7 @@ const postPrints=asyncWrapper(async (req,res)=>
 
    
            res.status(StatusCode.OK).json({
-               prints
+               ...prints,type:"prints"
            })
     }
     catch(error)
@@ -83,7 +83,7 @@ const UpdatePrints=asyncWrapper(async(req,res)=>
     
     res.status(StatusCode.OK).json({
        message:`Item updated `,
-       prints
+       ...prints,type:"prints"
       
     })}
     catch(error)
@@ -113,7 +113,7 @@ const getEachPrints=asyncWrapper(async(req,res)=>
         throw new BadRequestError("Product not found")
     }
     res.status(StatusCode.OK).json({
-        prints:prints
+        prints:prints,type:"prints"
     })
 })
 
