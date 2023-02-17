@@ -6,7 +6,13 @@ const CartSchema=mongoose.Schema(
     
          cart:  
                 [
-                 {name:{
+                 {
+                    _id:{
+                        type:mongoose.Types.ObjectId,
+                        trim:true,
+                        required:[true,"Id is must"],
+                    },
+                    name:{
                     type:String,
                     trim:true,
                     required:[true,"Originals name is must"],
