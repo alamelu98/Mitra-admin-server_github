@@ -3,7 +3,9 @@ const mongoose=require("mongoose")
 
 const CartSchema=mongoose.Schema(
     {
-    
+    userID:{type:mongoose.Types.ObjectId,
+    trim:true,
+required:[true,"UserId is must"]},
          cart:  
                 [
                  {
