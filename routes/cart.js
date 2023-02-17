@@ -4,7 +4,8 @@ const {getAllCart,postCart,UpdateCart,deleteCart,getEachCart}=require("../contro
 
 
 
-router.route("/").get(getAllCart).post(postCart)
+router.route("/").get(getAllCart)
+router.route("/checkout").post(postCart)
 
 
 router.route("/:Cartid").get(getEachCart).delete(deleteCart)
