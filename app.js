@@ -57,6 +57,7 @@ app.use("/admin/users",adminAuth,userview)
 app.use("/admin",adminRoute)
 app.use("/admin/originals",adminAuth,originalsRoute)
 app.use("/originals",originalsRoute)
+app.use("/cart/checkout",userAuth,cartRoute)
 app.use("/admin/cart",adminAuth,cartRoute)
 app.use("/cart",cartRoute)
 
