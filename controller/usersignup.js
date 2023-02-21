@@ -30,7 +30,7 @@ const userLoginin=asyncWrapper(async(req,res)=>
     }
     const token=user.getToken()
 
-    res.status(200).json({message:"Successfully loggedn in",userToken:token})
+    res.status(200).json({message:"Successfully loggedn in",userToken:token,userdetails_user:user})
 
 })
 const newUserRegister=asyncWrapper(async(req,res)=>
@@ -39,7 +39,7 @@ const newUserRegister=asyncWrapper(async(req,res)=>
         ...req.body,date:Date.now()
     })
     const token=tempUser.getToken()
-    res.status(200).json({message:"usercreated",userdetails:tempUser,userToken:token})
+    res.status(200).json({message:"usercreated",userdetails:tempUser,userToken:token,userdetails_user:tempUser})
 
 })
 
