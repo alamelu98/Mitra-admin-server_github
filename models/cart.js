@@ -6,6 +6,12 @@ const CartSchema=mongoose.Schema(
     userID:{type:mongoose.Types.ObjectId,
     trim:true,
 required:[true,"UserId is must"]},
+         orderComplete:{
+type:Boolean,
+trim:true,
+required:[true,"order complete"]
+
+     },
          cart:  
                 [
                  {
