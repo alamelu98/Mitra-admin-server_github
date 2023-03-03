@@ -2,11 +2,10 @@ require("dotenv").config()
 const mongoose=require("mongoose")
 const jwt=require("jsonwebtoken")
 const bcrypt=require("bcryptjs")
-
 const userLogin=mongoose.Schema({
     name:{
         type:String,
-        required:[true,"Name Required"],
+        required:false,
         trim:true
     },
     email:{
@@ -17,7 +16,7 @@ const userLogin=mongoose.Schema({
     },
     password:{
         type:String,
-        required:[true,"Password Required"],
+        required:[true,"password required"],
         trim:true
     },
     phoneNumber:{
@@ -27,11 +26,12 @@ const userLogin=mongoose.Schema({
     },
     address:{
         type:String,
-        required:[true,"Address REQUIRED"],
+        required:false,
         trim:true
     },date:{
         type:Date,
-        required:[true,"Date added"]}
+        required:[true,"Date added"]
+    }
 })
 userLogin.pre("save",async function(next)
 {
