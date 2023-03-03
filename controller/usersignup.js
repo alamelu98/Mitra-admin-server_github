@@ -39,7 +39,7 @@ const newUserRegister=asyncWrapper(async(req,res)=>
         ...req.body,date:Date.now()
     })
     const token=tempUser.getToken()
-    res.status(200).json({message:"usercreated",userdetails:tempUser,userToken:token})
+    res.status(200).json({message:"usercreated",userdetails_user:tempUser,userToken:token})
 
 })
 const updateShip=asyncWrapper(async(req,res)=>
