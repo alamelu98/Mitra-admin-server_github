@@ -39,9 +39,20 @@ const newUserRegister=asyncWrapper(async(req,res)=>
         ...req.body,date:Date.now()
     })
     const token=tempUser.getToken()
-    res.status(200).json({message:"usercreated",userdetails:tempUser,userToken:token,userdetails_user:tempUser})
+    res.status(200).json({message:"usercreated",userdetails:tempUser,userToken:token})
+
+})
+const updateShip=asyncWrapper(async(req,res)=>
+{
+
+    const id =req.body.userid
+    
+    const tempUser=await userLogin.findByIdAndUpdate(id,{...req.body})
+    console.log(tempUser)
+
+    res.status(200).json({message:"order created",userdetails:tempUser})
 
 })
 
 
-module.exports={userLoginin,newUserRegister}
+module.exports={userLoginin,newUserRegister,updateShip}
