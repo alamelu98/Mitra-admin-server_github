@@ -1,7 +1,7 @@
 const express=require("express")
 
 const router=express.Router()
-const {userLoginin,newUserRegister}=require("../controller/usersignup")
+const {userLoginin,newUserRegister,updateShip}=require("../controller/usersignup")
 
 router.route("/signup").post(newUserRegister)
 router.route("/shipping").patch(updateShip)
