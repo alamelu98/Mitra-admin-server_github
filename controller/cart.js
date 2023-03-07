@@ -22,7 +22,7 @@ const getAllCart=asyncWrapper(async(req,res)=>
 const postCart=asyncWrapper(async(req,res)=>
 {
    
-    const cart1= await Cart.create({cart:req.body})
+    const cart1= await Cart.create(req.body)
     const subCart=await Promise.all(cart1.cart.map(async (eachitem)=>
     {
        console.log(eachitem._id)
