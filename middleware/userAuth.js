@@ -14,7 +14,7 @@ const auth=(req,res,next)=>
     const token=authToken.split(" ")[1]
 
     try{
-        const payload=jwt.verify(token,process.env.JWT_SECRET_CUSTOMER)
+        const payload=jwt.verify(token,process.env.JWT_SECRET_USER)
         req.user={userid:payload.userid,username:payload.Username,email:payload.userEmail}
         next()
     }
