@@ -15,6 +15,10 @@ trim:true,
 required:[true,"order complete"]
 
      },
+        ,date:{
+        type:Date,
+        required:[true,"Date added"]
+    },
          cart:  
                 [
                  {
