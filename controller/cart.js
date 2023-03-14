@@ -22,7 +22,7 @@ const getAllCart=asyncWrapper(async(req,res)=>
 const postCart=asyncWrapper(async(req,res)=>
 {
    
-    const cart1= await Cart.create({req.body,date:Date.now()})
+    const cart1= await Cart.create({...req.body,date:Date.now()})
     const subCart=await Promise.all(cart1.cart.map(async (eachitem)=>
     {
        console.log(eachitem._id)
@@ -45,7 +45,7 @@ const postCart=asyncWrapper(async(req,res)=>
     //     cart:subCart,
     // })
     res.status(StatusCode.OK).json({
-        cart:cart1,
+        cart:cart1
     })
 })
 
