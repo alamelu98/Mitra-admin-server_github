@@ -15,7 +15,7 @@ trim:true,
 required:[true,"order complete"]
 
      },
-        ,date:{
+        date:{
         type:Date,
         required:[true,"Date added"]
     },
