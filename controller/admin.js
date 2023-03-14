@@ -39,14 +39,15 @@ const enterlogin=asyncWrapper(async(req,res)=>
 
 const viewAllCustomer=asyncWrapper(async(req,res)=>
 {
+    var carts
     const allUsers=await UserLogin.find()
  const cart1=cart.findOne({userID:allUsers._id})
  console.log(cart1)
    if(cart1){
-       const carts=cart1.cart
+        carts=cart1.cart
    }
     else{
-        const carts="no cart data"
+         carts="no cart data"
     }
     res.status(200).json({items:{...allUsers,cart:carts}})
 })
