@@ -2,6 +2,7 @@ const asyncWrapper = require("../middleware/async");
 const Admin=require("../models/admin")
 const UnAuthError=require("../error/unauthenticated");
 const UserLogin = require("../models/UserLogin");
+const cart=require("../models/cart")
 
 
 
@@ -39,8 +40,14 @@ const enterlogin=asyncWrapper(async(req,res)=>
 const viewAllCustomer=asyncWrapper(async(req,res)=>
 {
     const allUsers=await UserLogin.find()
-
-    res.status(200).json({items:allUsers})
+ const cart1=cart.findOne({allUsers._id})
+   if(cart1){
+       const carts=cart1.cart
+   }
+    else{
+        const carts="no cart data"
+    }
+    res.status(200).json({items:{...allUsers,cart:carts}})
 })
 
 module.exports={loginAdmin,enterlogin,viewAllCustomer}
