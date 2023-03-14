@@ -40,7 +40,8 @@ const enterlogin=asyncWrapper(async(req,res)=>
 const viewAllCustomer=asyncWrapper(async(req,res)=>
 {
     const allUsers=await UserLogin.find()
- const cart1=cart.findOne({allUsers[_id]})
+ const cart1=cart.findOne({userID:allUsers._id})
+ console.log(cart1}
    if(cart1){
        const carts=cart1.cart
    }
