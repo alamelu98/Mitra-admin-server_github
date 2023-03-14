@@ -2,7 +2,7 @@ const asyncWrapper=require("../middleware/async")
 const BadRequestError=require("../error/badrequest")
 const UnAuthError=require("../error/unauthenticated")
 const userLogin=require("../models/UserLogin")
-const cart=require("../models/cart")
+
 
 
 
@@ -30,14 +30,8 @@ const userLoginin=asyncWrapper(async(req,res)=>
 
     }
     const token=user.getToken()
-    const cart1=cart.findOne({user._id})
-   if(cart1){
-       const carts=cart1.cart
-   }
-    else{
-        const carts="no cart data"
-    }
-    res.status(200).json({message:"Successfully loggedn in",userToken:token,userdetails_user:user,cart:carts})
+   
+    res.status(200).json({message:"Successfully loggedn in",userToken:token,userdetails_user:user)
 
 })
 const newUserRegister=asyncWrapper(async(req,res)=>
