@@ -59,7 +59,7 @@ const UpdateCart=asyncWrapper(async(req,res)=>
         throw new BadRequestError("product not found")
     }
     
-    res.status(StatusCodes.OK).json({
+    res.status(StatusCode.OK).json({
        message:`Item updated ${update}`
     })
     res.status(StatusCode.OK).json({
