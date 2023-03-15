@@ -41,15 +41,19 @@ const viewAllCustomer=asyncWrapper(async(req,res)=>
 {
     var carts
     const allUsers=await UserLogin.find()
- const cart1=cart.findOne({userID:allUsers._id})
- console.log(cart1)
-   if(cart1){
-        carts=cart1.cart
-   }
-    else{
-         carts="no cart data"
-    }
-    res.status(200).json({items:{...allUsers,cart:carts}})
+    const cart_user=await Promise.all(allUsers.map((each)=>
+      {
+        const cart1=cart.finOne({userID:each._id})
+        if(cart1){
+           carts=cart1.cart
+        }
+        else{
+            carts="no cart data"
+        }
+        return {...each,cart:carts}
+    }))
+
+    res.status(200).json({items:cart_user})
 })
 
 module.exports={loginAdmin,enterlogin,viewAllCustomer}
