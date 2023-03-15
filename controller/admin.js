@@ -50,7 +50,7 @@ const viewAllCustomer=asyncWrapper(async(req,res)=>
         else{
             carts="no cart data"
         }
-        return {...each,cart:carts}
+        return {...each,carta:carts}
     }))
 
     res.status(200).json({items:cart_user})
