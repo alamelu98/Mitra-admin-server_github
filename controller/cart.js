@@ -52,9 +52,9 @@ const postCart=asyncWrapper(async(req,res)=>
 const UpdateCart=asyncWrapper(async(req,res)=>
 {
     const id=req.params.Cartid
-    const quantity=req.params.quantity
     
-    const cart=await Cart.findByIdAndUpdate(id,{[quantity]:34})
+    
+    const cart=await Cart.findByIdAndUpdate(id,{shipped:req.body.shipped})
     if(!cart){
         throw new BadRequestError("product not found")
     }
