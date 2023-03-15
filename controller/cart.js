@@ -60,7 +60,7 @@ const UpdateCart=asyncWrapper(async(req,res)=>
     }
     
     res.status(StatusCode.OK).json({
-       message:`Item updated ${update}`
+       message:`Item updated ${cart}`
     })
     res.status(StatusCode.OK).json({
         "message":"update Cart"
