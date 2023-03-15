@@ -49,12 +49,12 @@ const viewAllCustomer=asyncWrapper(async(req,res)=>
         const cart1=await cart.findOne({userId:id1})
         //console.log(cart1)
         if(cart1){
-           carts=cart1.cart
+              return {_id:each._id,name:each.name,email:each.email,password:each.password,phoneNumber:each.phoneNumber,address:each.address,date:each.date,carts:cart1}
         }
         else{
-            carts="no cart data"
+                return {_id:each._id,name:each.name,email:each.email,password:each.password,phoneNumber:each.phoneNumber,address:each.address,date:each.date,carts:"no cart items"}
         }
-        return {_id:each._id,name:each.name,email:each.email,password:each.password,phoneNumber:each.phoneNumber,address:each.address,date:each.date,carts:carts}
+    
        
     }))
     console.log(cart_user)
