@@ -43,7 +43,7 @@ const viewAllCustomer=asyncWrapper(async(req,res)=>
     const allUsers=await UserLogin.find()
     const cart_user=await Promise.all(allUsers.map((each)=>
       {
-        const cart1=cart.finOne({userID:each._id})
+        const cart1=cart.findOne({userID:each._id})
         if(cart1){
            carts=cart1.cart
         }
