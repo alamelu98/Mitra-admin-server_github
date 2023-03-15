@@ -41,18 +41,23 @@ const viewAllCustomer=asyncWrapper(async(req,res)=>
 {
     var carts
     const allUsers=await UserLogin.find()
-    const cart_user=await Promise.all(allUsers.map((each)=>
+    const cart_user=await Promise.all(allUsers.map(async(each)=>
       {
-        const cart1=cart.findOne({userID:each._id})
+        //console.log(typeof(each))
+        const id1=each._id.toString()
+        
+        const cart1=await cart.findOne({userId:id1})
+        //console.log(cart1)
         if(cart1){
            carts=cart1.cart
         }
         else{
             carts="no cart data"
         }
-        return {...each,carta:carts}
+        return {_id:each._id,name:each.name,email:each.email,password:each.password,phoneNumber:each.phoneNumber,address:each.address,date:each.date,carts:carts}
+       
     }))
-
+    console.log(cart_user)
     res.status(200).json({items:cart_user})
 })
 
