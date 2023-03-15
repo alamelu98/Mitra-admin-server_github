@@ -18,7 +18,14 @@ required:[true,"order complete"]
         date:{
         type:Date,
         required:[true,"Date added"]
-    },
+    },shipped:{
+type:Boolean,
+trim:true,
+        default:false,
+required:[true,"order complete"]
+
+     },
+        
          cart:  
                 [
                  {
