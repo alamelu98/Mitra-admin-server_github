@@ -10,5 +10,5 @@ router.route("/checkout").post(postCart)
 
 router.route("/:Cartid").get(getEachCart).delete(deleteCart)
 
-router.route("/:Cartid/quantity").patch(UpdateCart)
+router.route("/:Cartid").patch(UpdateCart)
 module.exports=router
