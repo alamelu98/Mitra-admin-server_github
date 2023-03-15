@@ -46,7 +46,7 @@ const viewAllCustomer=asyncWrapper(async(req,res)=>
         //console.log(typeof(each))
         const id1=each._id.toString()
         
-        const cart1=await cart.findOne({userId:id1})
+        const cart1=await cart.findOne({userID:id1})
         //console.log(cart1)
         if(!cart1){
               return {_id:each._id,name:each.name,email:each.email,password:each.password,phoneNumber:each.phoneNumber,address:each.address,date:each.date,carts:"no cart items"} 
