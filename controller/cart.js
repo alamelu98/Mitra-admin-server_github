@@ -44,7 +44,17 @@ const postCart=asyncWrapper(async(req,res)=>
     // res.status(StatusCode.OK).json({
     //     cart:subCart,
     // })
-    
+    var instance = new Razorpay({ key_id: 'rzp_test_DcVienImwqiSTx', key_secret: 'jQX0W67lKbsrb5ArV9f1xenG' })
+
+instance.orders.create({
+  amount: 10000,
+  currency: "INR",
+  receipt: "receipt#1",
+  notes: {
+    key1: "value3",
+    key2: "value2"
+  }
+})
     res.status(StatusCode.OK).json({
         cart:cart1
     })
