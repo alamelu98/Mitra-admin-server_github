@@ -44,6 +44,7 @@ const postCart=asyncWrapper(async(req,res)=>
     // res.status(StatusCode.OK).json({
     //     cart:subCart,
     // })
+    
     res.status(StatusCode.OK).json({
         cart:cart1
     })
